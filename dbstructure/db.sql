@@ -1,3 +1,17 @@
+/*
+
+ Source Server         : localhost
+ Source Server Type    : MySQL
+ Source Server Version : 50527
+ Source Host           : localhost
+ Source Database       : cc98
+
+ Target Server Type    : MySQL
+ Target Server Version : 50527
+ File Encoding         : utf-8
+
+*/
+
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -156,6 +170,7 @@ CREATE TABLE `collection` (
 
 -- TODO
 -- plane transaction
+
 
 
 
