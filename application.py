@@ -29,7 +29,13 @@ define("mysql_pwd", default = "mysql_db_pwd", help = "community database pwd")
 class Application(tornado.web.Application):
 	def __init__(self):
 		settings = dict(
-
+			blog_title = u"CC98 Forum",
+			template_path = os.path.join(os.path.dirname(__file__), "templates"),
+			static_path = os.path.join(os.path.dirname(__file__), "static"),
+			xsrf_cookies = True,
+			cookie_secret = "xxxxxxxxxxxxx",
+			login_url = "/login",
+			autoescape = None,
 		)
 
 		handlers = [
