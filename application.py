@@ -36,6 +36,7 @@ class Application(tornado.web.Application):
 			cookie_secret = "xxxxxxxxxxxxx",
 			login_url = "/login",
 			autoescape = None,
+			jinja2 = Environment(loader = FileSystemLoader(os.path.join(os.path.dirname(__file__), "templates")), trim_blocks = True),
 		)
 
 		handlers = [
