@@ -16,6 +16,12 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 
+import handler.base
+import handler.user
+import handler.topic
+import handler.page
+import handler.notification
+
 from tornado.options import define, options
 from jinja2 import Environment, FileSystemLoader
 
@@ -40,7 +46,28 @@ class Application(tornado.web.Application):
 		)
 
 		handlers = [
-			(),
+			(r"/", handler.topic.IndexHandler),
+            (r"/login", handler.user.LogoutHandler),
+            (r"/logout", handler.user.LogoutHandler),
+            (r"/forgot", handler.user.ForgotPasswordHandler),
+            (r"/register", handler.user.RegisterHandler),
+            (r"/setting/avatar", handler.user.SettingAvatarHandler),
+            (r"/setting/gravatar", handler.user.SettingAvatarFromGravatarHandler),
+            (r"/setting/password", handler.user.SettingPasswordHandler),
+            (r"/vote", handler.topic.VoteHandler),
+            (r"/favorites", handler.topic.FavoriteHandler),
+            (r"/unfavorites", handler.topic.CancelFavoriteHandler),
+            (r"/topic/(\d+)", handler.topic.ViewHandler),
+            (r"/topic/create", handler.topic.CreateHandler),
+            (r"/topic/edit", handler.topic.EditHandler),
+            (r"/reply/edit/(.*)", handler.topic.ReplyEditHandler),
+            (r"/node/(.*)", handler.topic.NodeTopicHandler),
+            (r"/user/(.*)", handler.user.ProfileHandler),
+            (r"/user/(.*)/topics", handler.user.UserTopicsHandler),
+            (r"/user/(.*)/replies", handler.user.UserRepliesHandler),
+            (r"/user/(.*)/favorites", handler.user.UserFavoritesHandler),
+            (r"/members", handler.user.MembersHandler),
+            (r"/notifications", handler.notification.ListHandler),
 		]
 
 		tornado.web.Application.__init__(self, handlers, settings)
